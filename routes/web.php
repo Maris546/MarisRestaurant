@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
+use TCG\Voyager\Facades\Voyager;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,10 +14,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('',[SiteController::class, 'index'])->name('index');
+Route::get('make-order/{id}',[SiteController::class, 'makeOrder'])->name('make-order');
+Route::post('send-order/{id}',[SiteController::class, 'sendOrder'])->name('send-order');
 
 
 Route::group(['prefix' => 'admin'], function () {
